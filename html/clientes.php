@@ -57,7 +57,7 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
 	<script src="../librerias/bootstrap/js/bootstrap.js"></script>
 	<script src="../librerias/alertifyjs/alertify.js"></script>
   <script src="../librerias/select2/js/select2.js"></script>
-
+  <script src="../js/funciones.js"></script>
         <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -130,26 +130,31 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
      <div id="txtSeccion"><h1><b>Clientes</b></h1></div>
      <div id="txtContenido">
      <div>&nbsp;</div>
-     <table width="100%" border="1">
+     <table class="table table-bordered" width="100%" >
   <tr>
-    <td colspan="2">
+    <td colspan="5">
     			<button class="btn btn-primary add" data-toggle="modal" name="add" data-target="#RegistrarClienteModal	" id="Agregar">AGREGAR</button> 
     </td>
    </tr>
+   <thead>
   <tr>
-    <td><b>Nombre</b></td>
-    <td><b>Email</b></td>
-    <td><b>City</b></td>
-    <td><b>Telefono</b></td>
-    <td><b>Accion</b></td>
+
+    <th><b>Nombre</b></th>
+    <th><b>Email</b></th>
+    <th><b>City</b></th>
+    <th><b>Telefono</b></th>
+    <th><b>Accion</b></th>
+
   </tr>
+  </thead>
+  <tbody>
   <?php foreach($clientesg as $lin){ 
   
-  $datos = $lin['id']."||".$lin['email']."||".$lin['name']."||".$lin['city']."||".$lin['telephone'];
+  $datos = $lin['id']."||".$lin['names']."||".$lin['email']."||".$lin['city']."||".$lin['telephone'];
   
   ?>
   <tr>
-    <td data_id="<?php echo $lin['name']?>"><?php echo $lin["name"];?></td>
+    <td data_id="<?php echo $lin['names']?>"><?php echo $lin["names"];?></td>
     <td data_id="<?php echo $lin['email']?>"><?php echo $lin["email"];?></td>
     <td data_id="<?php echo $lin['city']?>"><?php echo $lin["city"];?></td>
     <td data_id="<?php echo $lin['telephone']?>"><?php echo $lin["telephone"];?></td>
@@ -161,6 +166,7 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
     </td>
   </tr>
  <?php } ?>
+  </tbody>
 </table>
 
 
@@ -335,4 +341,105 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
  </div>
  </div>
   
+ <script>  
+$(document).ready(function(){  
 
+	
+  $(document).on('click', '.add', function(){  
+	$('#Registrar').click(function(){
+
+			var nombre=$('#Nombre').val();
+            var email=$('#Email').val();
+            var ciudad=$('#Ciudad').val();
+            var telefono=$('#Telefono').val();
+
+            if (!nombre || !email || !ciudad || !telefono) {
+            alert(" Todos los campos son obligatorios.");
+            return;
+        }
+
+       var cadena=  "nombre=" + nombre + "&email=" + email
+        + "&ciudad=" + ciudad + "&telefono=" + telefono;
+
+			$.ajax({
+							type: "POST",
+							url: 'nuevo.php',
+                            data: cadena,
+							success: function(data)
+							{
+									
+                                alertify.success(data);
+                             window.location.href = 'clientes.php';
+
+							},
+                            error: function(xhr, status, error) {
+                                alertify.success("Error en la solicitud AJAX: " + error);
+                             window.location.href = 'clientes.php';
+                           }
+
+
+			});
+
+		});
+});
+		
+		$(document).on('click', '.edit', function(){
+			
+		  var id = $(this).attr("id");
+		  
+		  	$('#Editar').click(function(){
+			 	
+		       
+				id=$('#id').val();
+                var nombre=$('#Nombreu').val();
+                var email=$('#Emailu').val();
+                var ciudad=$('#Ciudadu').val();
+                var telefono=$('#Telefonou').val();
+
+
+	            cadena= "id=" + id + "&nombre=" + nombre + "&email=" + email
+                + "&ciudad=" + ciudad + "&telefono=" + telefono;
+	
+			    $.ajax({
+					      type: 'POST',
+						  url: 'editar.php',
+						  data: cadena,
+							success: function(data)
+							{		
+						
+		                     	alertify.alert('Alert Title', data);
+                                 window.location.href = 'clientes.php';
+							},
+                            error: function(xhr, status, error) {
+                                alertify.success("Error en la solicitud AJAX: " + error);
+                             window.location.href = 'clientes.php';
+                           }
+
+			           });
+		  
+		    });
+     });
+	 
+	  $(document).on('click', '.drop', function(){
+			
+		 var id = $(this).attr("id");
+		  
+	  	  	$('#Eliminar').click(function(){
+		
+			   $.ajax({
+						type: "POST",
+						method:"post",
+						url: 'eliminar.php',
+						data: 'id='+id,
+							success: function(data)
+							{	
+		                     	alertify.success("Eliminado con exito :)");
+                                 window.location.href = 'clientes.php';
+							}
+			        });
+		  
+		});
+});
+
+});
+</script>
