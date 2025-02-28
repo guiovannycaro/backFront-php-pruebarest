@@ -204,7 +204,7 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
           <div class="form-group">
 			   <label class="control-label" for="inputPatient">Email</label>
 			   <div class="field desc">
-			  	 <input class="form-control" id="Email" name="Email" placeholder="Email" type="text" value="" required>
+			  	 <input class="form-control" id="Email" name="Email" placeholder="Email" type="email" value="" required>
                  
            
 			  </div>
@@ -266,7 +266,7 @@ while ($itemclientesg = $consclientesg->fetch_row($resclientesg)) {
           <div class="form-group">
 			   <label class="control-label" for="inputPatient">Email</label>
 			   <div class="field desc">
-			  	 <input class="form-control" id="Emailu" name="Emailu" placeholder="Email" type="text" value="" required>
+			  	 <input class="form-control" id="Emailu" name="Emailu" placeholder="Email" type="email" value="" required>
                  
              
 			  </div>
@@ -351,12 +351,37 @@ $(document).ready(function(){
 			var nombre=$('#Nombre').val();
             var email=$('#Email').val();
             var ciudad=$('#Ciudad').val();
-            var telefono=$('#Telefono').val();
+            var telefono=$('#Telefono').val().replace(/\s+/g, '');
 
             if (!nombre || !email || !ciudad || !telefono) {
-            alert(" Todos los campos son obligatorios.");
+              alertify.success(" Todos los campos son obligatorios.");
             return;
-        }
+           }
+
+            var regex1 = /^[A-Za-z\s]+$/;
+            if (!regex1.test(nombre))  {
+              alertify.success('Por favor, ingresa un nombre válido (solo letras y espacios)');
+           }
+
+         var regex2 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+           if (!regex2.test(email))  {
+             alertify.success('Por favor, ingresa un correo electrónico válido');
+             return;
+           }
+
+         var regex3 = /^[0-9]{7,}$/; 
+           if (!regex3.test(telefono)) 
+          {
+             alertify.success('Por favor, ingresa un número de teléfono válido (solo números) sin espacios y como minimo 7 numeros');
+             return; 
+          }
+
+          var regex4 = /^[A-Za-z]+$/; 
+          if (!regex4.test(ciudad)) 
+           {
+              alertify.success('Por favor, ingresa solo letras (sin espacios, números o caracteres especiales)');
+              return; 
+           }
 
        var cadena=  "nombre=" + nombre + "&email=" + email
         + "&ciudad=" + ciudad + "&telefono=" + telefono;
@@ -396,6 +421,36 @@ $(document).ready(function(){
                 var ciudad=$('#Ciudadu').val();
                 var telefono=$('#Telefonou').val();
 
+                
+            if (!nombre || !email || !ciudad || !telefono) {
+              alertify.success(" Todos los campos son obligatorios.");
+            return;
+           }
+
+            var regex1 = /^[A-Za-z\s]+$/;
+            if (!regex1.test(nombre))  {
+              alertify.success('Por favor, ingresa un nombre válido (solo letras y espacios)');
+           }
+
+         var regex2 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+           if (!regex2.test(email))  {
+             alertify.success('Por favor, ingresa un correo electrónico válido');
+             return;
+           }
+
+         var regex3 = /^[0-9]{7,}$/; 
+           if (!regex3.test(telefono)) 
+          {
+             alertify.success('Por favor, ingresa un número de teléfono válido (solo números) sin espacios y como minimo 7 numeros');
+             return; 
+          }
+
+          var regex4 = /^[A-Za-z]+$/; 
+          if (!regex4.test(ciudad)) 
+           {
+              alertify.success('Por favor, ingresa solo letras (sin espacios, números o caracteres especiales)');
+              return; 
+           }
 
 	            cadena= "id=" + id + "&nombre=" + nombre + "&email=" + email
                 + "&ciudad=" + ciudad + "&telefono=" + telefono;
