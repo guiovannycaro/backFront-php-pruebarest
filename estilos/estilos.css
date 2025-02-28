@@ -1,0 +1,524 @@
+@charset "utf-8";
+
+/* Medios fluidos sencillos
+   Nota: Los medios fluidos exigen la eliminación de los atributos de altura y anchura de los medios del código HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+
+img,
+object,
+embed,
+video {
+    max-width: 100%;
+}
+
+
+/* IE 6 no admite max-width (anchura máxima), por lo que usa de manera predeterminada una anchura del 100% */
+
+.ie6 img {
+    width: 100%;
+}
+
+
+/*
+        Propiedades de cuadrícula fluida de Dreamweaver
+        ----------------------------------
+        dw-num-cols-mobile:		5;
+        dw-num-cols-tablet:		8;
+        dw-num-cols-desktop:	10;
+        dw-gutter-percentage:	25;
+        
+        Inspiración obtenida de "Responsive Web Design" de Ethan Marcotte 
+        http://www.alistapart.com/articles/responsive-web-design
+        
+        y Golden Grid System de Joni Korpi
+        http://goldengridsystem.com/
+*/
+
+
+/* Diseño móvil: 480 px e inferior. */
+
+body {
+    background-image: url(../imagenes/Cabezote3.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    font-size: 10px;
+    padding: 0px;
+    margin: 0px;
+    width: 100%
+}
+
+.gridContainer {
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    padding-left: 0%;
+    /*
+    padding-right: 1.82%;*/
+}
+
+#contenedor {
+    width: 100%;
+    max-width: 480px;
+    margin: auto;
+    display: block;
+}
+
+#cabezote {
+    width: 100%;
+    height: 60px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    padding-top: 13%;
+    margin-left: 1%;
+    display: block;
+}
+
+#cuerpo {
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+    z-index: 2;
+    padding-top: 1%;
+    margin-left: -9%;
+    display: block;
+}
+
+#noticia {
+    width: 100%;
+    float: left;
+    height: auto;
+    position: relative;
+    z-index: 3;
+    margin-left: 17%;
+    display: block;
+    margin-top: 8%;
+}
+
+#cuadroing {
+    background-image: url(../imagenes/CuadroIngreso3.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 401px;
+    float: left;
+    margin-top: 13%;
+    position: relative;
+    z-index: 3;
+    display: block;
+    margin-left: -9%;
+}
+
+#txt {
+    float: left;
+    z-index: 3;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 8%;
+}
+
+#nusuario {
+    height: 15px;
+    width: 20%;
+    float: left;
+    margin-top: -66.5%;
+    margin-left: 41%;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#usuario {
+    height: 15px;
+    width: 20%;
+    float: right;
+    margin-top: -61.1%;
+    margin-right: 46.3%;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#ncontrasena {
+    height: 15px;
+    width: 20%;
+    float: left;
+    margin-top: -57%;
+    margin-left: 38%;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#contras {
+    height: 15px;
+    width: 18%;
+    float: right;
+    margin-top: -52.1%;
+    margin-right: 48.3%;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#imagenF {
+    background-image: url(../imagenes/icono_usuarios.png);
+    background-repeat: no-repeat;
+    height: 128px;
+    width: 20%;
+    margin-top: -36%;
+    margin-left: 87px;
+    float: left;
+}
+
+#ingresar {
+    background-image: url(../imagenes/BTingresar.png);
+    background-repeat: no-repeat;
+    height: 29px;
+    width: 35%;
+    margin-top: -45%;
+    margin-left: 146px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#registro {
+    background-image: url(../imagenes/BTregistro.png);
+    background-repeat: no-repeat;
+    height: 29px;
+    width: 37%;
+    margin-top: -37%;
+    margin-left: 145px;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    display: block;
+}
+
+#pie {
+    background-color: #370ebe;
+    position: relative;
+    margin-top: 1%;
+    z-index: 3;
+    float: left;
+    width: 100%;
+    height: 20px;
+    position: relative;
+    z-index: 5;
+    display: block;
+}
+
+#recordard {
+    background-image: url(../imagenes/BTrecordar.png);
+    background-repeat: no-repeat;
+    width: 22%;
+    margin: -29% 185px 38px 147px;
+    height: 25px;
+    float: left;
+    padding: 2px 5px;
+    display: block;
+}
+
+
+/* Diseño tableta: de 481 px a 768 px. Hereda estilos de: Diseño móvil. */
+
+@media only screen and (min-width: 481px) {
+    body {
+        background-image: url(../imagenes/Cabezote2.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: top center;
+        font-size: 10px;
+        padding: 0px;
+        margin: 0px;
+        width: 100%
+    }
+    .gridContainer {
+        width: 100%;
+        padding-left: 0%;
+        /*padding-right: 1.1625%;*/
+    }
+    #txt {
+        float: left;
+        z-index: 3;
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 18%;
+    }
+    #contenedor {
+        width: 100%;
+        max-width: 480px;
+        margin: auto;
+        display: block;
+    }
+    #cabezote {
+        width: 100%;
+        height: 60px;
+        float: left;
+        position: relative;
+        z-index: 1;
+        padding-top: 13%;
+        margin-left: 1%;
+        display: block;
+    }
+    #cuerpo {
+        width: 100%;
+        height: auto;
+        float: left;
+        z-index: 2;
+        padding-top: 1%;
+        margin-left: -9%;
+        position: relative;
+        display: block;
+    }
+    #noticia {
+        width: 84%;
+        float: left;
+        height: auto;
+        margin-left: 19%;
+        display: block;
+        margin-top: -5%;
+    }
+    #cuadroing {
+        background-image: url(../imagenes/CuadroIngreso2.png);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 378px;
+        float: left;
+        margin-top: 13%;
+        display: block;
+        margin-left: 12%;
+        display: block;
+    }
+    #nusuario {
+        height: 15px;
+        width: 20%;
+        float: left;
+        margin-top: -76%;
+        margin-left: 41%;
+        display: block;
+    }
+    #usuario {
+        height: 15px;
+        width: 20%;
+        float: right;
+        margin-top: -75.1%;
+        margin-right: 14.3%;
+        display: block;
+    }
+    #ncontrasena {
+        height: 15px;
+        width: 20%;
+        float: left;
+        margin-top: -68%;
+        margin-left: 41%;
+        display: block;
+    }
+    #contras {
+        height: 15px;
+        width: 20%;
+        float: right;
+        margin-top: -67.1%;
+        margin-right: 14.3%;
+        display: block;
+    }
+    #ingresar {
+        background-image: url(../imagenes/BTingresar.png);
+        background-repeat: no-repeat;
+        height: 29px;
+        width: 35%;
+        margin-top: -238px;
+        margin-left: 264px;
+        float: left;
+        cursor: pointer;
+        display: block;
+    }
+    #registro {
+        background-image: url(../imagenes/BTregistro.png);
+        background-repeat: no-repeat;
+        height: 29px;
+        width: 37%;
+        margin-top: -205px;
+        margin-left: 265px;
+        float: left;
+        cursor: pointer;
+        display: block;
+    }
+    #pie {
+        background-color: #d82d33;
+        position: relative;
+        margin-top: 1%;
+        z-index: 3;
+        float: left;
+        width: 100%;
+        height: 20px;
+        display: block;
+    }
+    #recordard {
+        background-image: url(../imagenes/BTrecordar.png);
+        background-repeat: no-repeat;
+        width: 20%;
+        margin: -172px 48px 9px 7px;
+        height: 20px;
+        float: right;
+        padding: 2px 5px;
+        display: block;
+    }
+}
+
+
+/* Diseño escritorio: de 769 px hasta un máximo de 1232 px.  Hereda estilos de: Diseño móvil y Diseño tableta. */
+
+@media only screen and (min-width: 769px) {
+    body {
+        background-image: url(../imagenes/Cabezote.png);
+        background-size: inherit;
+        background-repeat: no-repeat;
+        background-position: top center;
+        font-size: 10px;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+    }
+    .gridContainer {
+        width: 100%;
+        padding-left: 0%;
+        /*padding-right: 1.1625%;*/
+    }
+    #contenedor {
+        width: 100%;
+        max-width: 995px;
+        margin: auto;
+        display: block;
+    }
+    #cabezote {
+        width: 100%;
+        height: 60px;
+        float: left;
+        position: relative;
+        z-index: 1;
+        padding-top: 13%;
+        margin-left: 1%;
+        display: block;
+    }
+    #cuerpo {
+        width: 100%;
+        height: auto;
+        float: left;
+        z-index: 2;
+        padding-top: 1%;
+        margin-left: -9%;
+        position: relative;
+        display: block;
+    }
+    #noticia {
+        width: 63%;
+        float: left;
+        height: auto;
+        margin-left: 30%;
+        margin-top: -1%;
+        display: block;
+    }
+    #cuadroing {
+        background-image: url(../imagenes/CuadroIngreso.png);
+        background-repeat: no-repeat;
+        width: 81%;
+        height: 378px;
+        float: left;
+        margin-top: -3%;
+        display: block;
+        margin-left: 12%;
+        display: block;
+    }
+    #nusuario {
+        height: 15px;
+        width: 20%;
+        float: left;
+        margin-top: -38%;
+        margin-left: 20%;
+        display: block;
+    }
+    #usuario {
+        height: 15px;
+        width: 32%;
+        float: right;
+        margin-top: -38.1%;
+        margin-right: 32.3%;
+        display: block;
+    }
+    #ncontrasena {
+        height: 15px;
+        width: 20%;
+        float: left;
+        margin-top: -33%;
+        margin-left: 20%;
+        display: block;
+    }
+    #contras {
+        height: 15px;
+        width: 30%;
+        float: right;
+        margin-top: -33.1%;
+        margin-right: 34.3%;
+        display: block;
+    }
+    #ingresar {
+        background-image: url(../imagenes/BTingresar.png);
+        background-repeat: no-repeat;
+        height: 29px;
+        width: 19%;
+        margin-top: -172px;
+        margin-right: 172px;
+        float: right;
+        cursor: pointer;
+        display: block;
+    }
+    #registro {
+        background-image: url(../imagenes/BTregistro.png);
+        background-repeat: no-repeat;
+        height: 29px;
+        width: 19%;
+        margin-top: -172px;
+        margin-right: 270px;
+        float: right;
+        cursor: pointer;
+        display: block;
+    }
+    #pie {
+        background-color: #d82d33;
+        position: relative;
+        margin-top: 1%;
+        z-index: 3;
+        float: left;
+        width: 100%;
+        height: 20px;
+        display: block;
+    }
+    #txt {
+        float: left;
+        z-index: 3;
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-top: 3%;
+        display: block;
+    }
+    #recordard {
+        background-image: url(../imagenes/BTrecordar.png);
+        background-repeat: no-repeat;
+        width: 13%;
+        margin: -139px 239px 9px 7px;
+        height: 25px;
+        float: right;
+        padding: 2px 5px;
+        display: block;
+    }
+}
